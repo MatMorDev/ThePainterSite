@@ -1,0 +1,23 @@
+.modalBody {
+  background-color: #353535;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #fff;
+}
+.c_button {
+  background-color: #fed361;
+  color: #252525;
+  font-weight: bold;
+  border: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+.c_button:hover {
+  background-color: #bb9d49;
+}
+.p {
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}

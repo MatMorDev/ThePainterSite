@@ -1,0 +1,11 @@
+.navElement {
+  border-bottom: 3px solid #212529;
+}
+
+.navElement:hover {
+  color: #fcfcfc;
+  border-bottom: 3px solid orange;
+  text-shadow: 2px 2px 5px orange;
+}
+
+/* border-bottom: 3px solid #fcfcfc;*/

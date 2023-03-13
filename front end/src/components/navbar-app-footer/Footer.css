@@ -1,0 +1,28 @@
+/*footer in fondo alla pagina a schermo intero*/
+#footer {
+  /*position: fixed;*/
+  bottom: 0;
+  width: 100%;
+}
+
+.footerContainer {
+  background-color: #212529;
+  color: #fcfcfc;
+  border-top: solid 5px #520000;
+}
+
+.rowFooter > div :hover {
+  color: orange;
+  text-decoration: underline;
+}
+
+h5 {
+  color: #fcfcfc !important;
+  text-decoration: none !important;
+}
+
+.footerFinalRow {
+  background-color: #520000;
+  color: #fcfcfc;
+  text-decoration: underline;
+}

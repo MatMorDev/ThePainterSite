@@ -1,0 +1,22 @@
+.toggle {
+  font-weight: bold;
+}
+
+.toggle:hover {
+  text-decoration: underline;
+}
+
+#btnContinue {
+  font-weight: bold;
+  background-color: #558b2f;
+}
+
+#btnContinue:hover {
+  background-color: #3f6623;
+}
+
+.check {
+  height: 23px;
+  width: 23px;
+  color: #3f6623;
+}

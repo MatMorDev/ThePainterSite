@@ -1,0 +1,8 @@
+.customer > .card-body {
+  position: relative;
+}
+.customer > .card-body > .customerBtn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
