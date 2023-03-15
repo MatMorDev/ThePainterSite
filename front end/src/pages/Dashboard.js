@@ -7,9 +7,13 @@ const Dashboard = ({
   loggedUser,
   customerSubscriber,
   handleLoggedUser,
+  articleList,
+  handleLoadData,
+  handleDeleteComment,
+  userComment,
+  setUserComment,
 }) => {
   const navigate = useNavigate();
-  const [showEdit, setShowEdit] = useState(false);
   const [thisSubscriber, setThisSubscriber] = useState({});
 
   const getUserData = async () => {
@@ -39,17 +43,20 @@ const Dashboard = ({
           customer={customer}
           getUserData={getUserData}
           handleLoggedUser={handleLoggedUser}
-          showEdit={showEdit}
-          setShowEdit={setShowEdit}
+          articleList={articleList}
+          userComment={userComment}
+          setUserComment={setUserComment}
+          handleDeleteComment={handleDeleteComment}
         />
       </div>
     );
   }
 
   useEffect(() => {
+    handleLoadData();
     getUserData();
     // eslint-disable-next-line
-  }, [loggedUser, showEdit]);
+  }, [userComment]);
 
   return <>{content}</>;
 };

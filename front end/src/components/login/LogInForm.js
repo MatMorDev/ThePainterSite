@@ -64,7 +64,7 @@ const LogInForm = ({ handleToggle, handleLoggedUser }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const errorObject = validate(inputState);
-    console.log(inputState);
+
     if (Object.keys(errorObject).length === 0) {
       const result = await loginSubscriber({
         username: inputState.username,
@@ -75,7 +75,7 @@ const LogInForm = ({ handleToggle, handleLoggedUser }) => {
         setInputState(defaultInputState);
         // porto il token dell'utente loggato in App
         handleLoggedUser(result.data);
-        navigate("/dashboard");
+        navigate("/");
       } else {
         console.log(result.data);
         window.alert(

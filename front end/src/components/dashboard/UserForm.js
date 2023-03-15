@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { putCustomer, putSubscriber } from "../../api";
-const UserForm = ({ customer, toggleShowEdit, thisSubscriber }) => {
+const UserForm = ({
+  customer,
+  toggleShowEdit,
+  thisSubscriber,
+  getUserData,
+}) => {
   const defaultInputState = {
     password: customer.password,
     firstName: customer.firstName,
@@ -84,6 +89,7 @@ const UserForm = ({ customer, toggleShowEdit, thisSubscriber }) => {
         setInputErrors({});
         setInputState(defaultInputState);
         console.log("modificato customer");
+        getUserData();
       } else {
         console.log(responseCustomer.data);
       }

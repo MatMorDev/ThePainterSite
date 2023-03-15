@@ -16,13 +16,30 @@
   text-decoration: underline;
 }
 
+/*per titoli*/
 h5 {
   color: #fcfcfc !important;
   text-decoration: none !important;
+}
+/*per i link*/
+.rowFooter > div > div > a {
+  color: #fcfcfc;
+  text-decoration: none;
 }
 
 .footerFinalRow {
   background-color: #520000;
   color: #fcfcfc;
   text-decoration: underline;
+}
+
+/* icons*/
+.noHover:hover {
+  color: #fcfcfc !important;
+  text-decoration: none !important;
+}
+
+.iconFooter {
+  height: 35px;
+  width: auto;
 }

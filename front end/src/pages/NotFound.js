@@ -13,7 +13,8 @@ const NotFound = () => {
       </Alert>
       <Image
         src={notFound}
-        className="img-fluid shadow-4"
+        className="img-fluid shadow-4 overflow-hidden"
+        style={{ height: "auto", width: "100%" }}
         alt="website logo"
       ></Image>
       <span className="align-self-end fs-6">

@@ -10,14 +10,22 @@ import LogInRegister from "./pages/LogInRegister";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";
 import Admin from "./pages/Admin";
-import { logoutSubscriber, getCustomerByEmail } from "./api";
+import {
+  logoutSubscriber,
+  getCustomerByEmail,
+  getArticles,
+  deleteComment,
+} from "./api";
 import { useEffect, useState } from "react";
 import Footer from "./components/navbar-app-footer/Footer";
 
 const App = () => {
   const [cookieTrigger, setCookieTrigger] = useState(false);
+  const [articleList, setArticleList] = useState([]);
   const [serviceList, setServiceList] = useState([]);
   const [serviceCart, setServiceCart] = useState([]);
+  const [userComment, setUserComment] = useState([]);
+  const [faqList, setFaqList] = useState([]);
   const [customer, setCustomer] = useState({});
   const [emailUser, setEmailUser] = useState("");
   const [loggedUser, setLoggedUser] = useState({
@@ -26,6 +34,14 @@ const App = () => {
     password: "",
   });
   const [lastUser, setLastUser] = useState({ idSub: "", count: false });
+
+  //delete comment dashboard
+  const handleDeleteComment = (valueId) => {
+    deleteComment(loggedUser.idSub, valueId);
+    console.log("message deleted");
+    const filtered = userComment.filter((comment) => comment.id !== valueId);
+    setUserComment(filtered);
+  };
 
   // handle per simulare un utente che si logga all'interno del sito
   const handleLoggedUser = (token) => {
@@ -60,6 +76,18 @@ const App = () => {
     status ? setCookieTrigger(true) : setCookieTrigger(false);
   };
 
+  const handleLoadData = () => {
+    const loadData = async () => {
+      const result = await getArticles();
+      if (result.ok) {
+        setArticleList(result.data);
+      } else {
+        console.log(result.data);
+      }
+    };
+    loadData();
+  };
+
   useEffect(() => {}, [loggedUser, serviceCart]);
 
   return (
@@ -81,7 +109,15 @@ const App = () => {
           <Route
             path="/"
             element={
-              <Home cookie={cookieTrigger} handleCookie={handleCookie} />
+              <Home
+                cookie={cookieTrigger}
+                handleCookie={handleCookie}
+                loggedUser={loggedUser}
+                lastUser={lastUser}
+                setLastUser={setLastUser}
+                faqList={faqList}
+                setFaqList={setFaqList}
+              />
             }
           />
           <Route path="/about" element={<About />} />
@@ -104,6 +140,9 @@ const App = () => {
                 loggedUser={loggedUser}
                 lastUser={lastUser}
                 setLastUser={setLastUser}
+                articleList={articleList}
+                setArticleList={setArticleList}
+                handleLoadData={handleLoadData}
               />
             }
           />
@@ -115,6 +154,11 @@ const App = () => {
                 loggedUser={loggedUser}
                 customerSubscriber={customerSubscriber}
                 handleLoggedUser={handleLoggedUser}
+                articleList={articleList}
+                handleLoadData={handleLoadData}
+                userComment={userComment}
+                setUserComment={setUserComment}
+                handleDeleteComment={handleDeleteComment}
               />
             }
           />

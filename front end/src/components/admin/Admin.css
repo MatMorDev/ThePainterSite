@@ -1,0 +1,8 @@
+.contentDiv > div {
+  font-size: medium;
+  text-align: center;
+  border-bottom: solid 3px rgba(0, 7, 105, 0.616);
+}
+.contentDivTitle {
+  font-weight: bold;
+}

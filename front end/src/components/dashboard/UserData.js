@@ -9,20 +9,20 @@ import { useNavigate } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import UserForm from "./UserForm";
-
+import CommentList from "./CommentList";
 const UserData = ({
   thisSubscriber,
   customer,
   getUserData,
   handleLoggedUser,
-  showEdit,
-  setShowEdit,
+  articleList,
+  userComment,
+  setUserComment,
+  handleDeleteComment,
 }) => {
   const navigate = useNavigate();
-
+  const [showEdit, setShowEdit] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
-  //console.log("subscriber per form", thisSubscriber);
-  //console.log("customer per ordini", customer);
 
   const toggleShowEdit = () => {
     setShowEdit(!showEdit);
@@ -39,6 +39,7 @@ const UserData = ({
       setShowDelete(false);
     }
   };
+
   let deleteChoice = <></>;
   if (showDelete) {
     deleteChoice = (
@@ -93,6 +94,7 @@ const UserData = ({
           customer={customer}
           toggleShowEdit={toggleShowEdit}
           thisSubscriber={thisSubscriber}
+          getUserData={getUserData}
         />
       </>
     );
@@ -159,50 +161,40 @@ const UserData = ({
     );
   }
 
-  let subComments = <></>;
-  if (
-    typeof thisSubscriber === "object" &&
-    thisSubscriber !== null &&
-    Object.keys(thisSubscriber).length !== 0
-  ) {
-    subComments = thisSubscriber.comments.map((comment) => {
-      return <div>{comment.content}</div>;
-    });
-  } else {
-    subComments = <>There are no comments</>;
-  }
-
   return (
     <>
       <h1 className="text-center">This is your dashboard</h1>
       <div className=" d-flex justify-content-around flex-wrap">
         <div className="col-12 col-sm-6 col-lg-6 ">
-          <Card className="customer">
+          <Card className="customer mb-3">
             <Card.Header>
               <Card.Title>Your subscriber & customer data</Card.Title>
             </Card.Header>
             <Card.Body>{customerData}</Card.Body>
-            <Card.Footer></Card.Footer>
           </Card>
         </div>
         <div className="col-12 col-sm-6 col-lg-6">
-          <Card>
+          <Card className="mb-3">
             <Card.Header>
               <Card.Title>Your orders </Card.Title>
             </Card.Header>
             <Card.Body>
               <OrderList customer={customer} getUserData={getUserData} />
             </Card.Body>
-            <Card.Footer></Card.Footer>
           </Card>
-          <Card>
+          <Card className="mb-3">
             <Card.Header>
               <Card.Title>Your Comments </Card.Title>
             </Card.Header>
             <Card.Body>
-              <div>{subComments}</div>
+              <CommentList
+                thisSubscriber={thisSubscriber}
+                articleList={articleList}
+                userComment={userComment}
+                setUserComment={setUserComment}
+                handleDeleteComment={handleDeleteComment}
+              />
             </Card.Body>
-            <Card.Footer></Card.Footer>
           </Card>
         </div>
       </div>

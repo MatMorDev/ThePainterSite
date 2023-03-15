@@ -1,0 +1,27 @@
+.list-group-item {
+  background-color: #f4fcff;
+}
+.aside:hover {
+  background-color: #fff8cd;
+  color: #6c3510;
+}
+.comments {
+  background-color: rgb(255, 255, 255);
+  font-family: Arial, Helvetica, sans-serif;
+}
+#arrowUp {
+  background-color: white;
+  color: black;
+  position: fixed;
+  width: auto;
+  height: 30px;
+  left: 92%;
+  top: 80%;
+  border-radius: 15px;
+}
+#arrowUp:hover {
+  color: orange;
+  background-color: black;
+  border: 2px solid #73ad21;
+  border-color: black;
+}
