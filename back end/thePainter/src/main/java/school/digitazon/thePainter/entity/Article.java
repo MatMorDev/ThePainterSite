@@ -7,6 +7,8 @@ import jakarta.validation.constraints.PastOrPresent;
 import java.time.LocalDate;
 import java.util.List;
 
+import static java.time.LocalDateTime.now;
+
 @Entity
 @Table(name = "article")
 public class Article {
@@ -27,7 +29,9 @@ public class Article {
     private List<Comment> comments;
 
     /* constructors */
-    public Article() {}
+    public Article() {
+        this.date= LocalDate.now();
+    }
 
     /* getters & setters*/
     public int getId() {return id;}

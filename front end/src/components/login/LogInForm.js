@@ -173,6 +173,7 @@ const LogInForm = ({ handleToggle, handleLoggedUser }) => {
                 variant="success"
                 type="submit"
                 className="my-3"
+                style={{ width: "150px" }}
               >
                 Access
               </Button>
@@ -181,7 +182,9 @@ const LogInForm = ({ handleToggle, handleLoggedUser }) => {
         </Form>
         <Card className="mt-1 mb-4">
           <Card.Header as="h5" className="text-center">
-            You don't have an account?
+            <span style={{ color: "black", fontWeight: "bolder" }}>
+              You don't have an account?
+            </span>
           </Card.Header>
           <Card.Body>
             <Card.Title className="text-center mb-4">

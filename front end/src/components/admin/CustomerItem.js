@@ -35,6 +35,7 @@ const CustomerItem = ({
     setShow(false);
     setModify(!modify);
   };
+
   const toggleModifyOrder = (orderId) => {
     // se non è mai stato cliccato
     if (modifyOrder.state === false && modifyOrder.id === 0) {

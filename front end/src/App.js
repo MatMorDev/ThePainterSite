@@ -109,18 +109,21 @@ const App = () => {
           <Route
             path="/"
             element={
-              <Home
-                cookie={cookieTrigger}
-                handleCookie={handleCookie}
-                loggedUser={loggedUser}
-                lastUser={lastUser}
-                setLastUser={setLastUser}
-                faqList={faqList}
-                setFaqList={setFaqList}
-              />
+              <div>
+                <Home
+                  cookie={cookieTrigger}
+                  handleCookie={handleCookie}
+                  loggedUser={loggedUser}
+                  lastUser={lastUser}
+                  setLastUser={setLastUser}
+                />
+              </div>
             }
           />
-          <Route path="/about" element={<About />} />
+          <Route
+            path="/about"
+            element={<About faqList={faqList} setFaqList={setFaqList} />}
+          />
           <Route
             path="/services"
             element={
@@ -162,7 +165,18 @@ const App = () => {
               />
             }
           />
-          <Route path="/admin" element={<Admin />} />
+          <Route
+            path="/admin"
+            element={
+              <Admin
+                serviceList={serviceList}
+                setServiceList={setServiceList}
+                articleList={articleList}
+                setArticleList={setArticleList}
+                loggedUser={loggedUser}
+              />
+            }
+          />
           <Route
             path="/login-register"
             element={<LogInRegister handleLoggedUser={handleLoggedUser} />}

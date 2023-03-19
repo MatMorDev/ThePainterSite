@@ -28,7 +28,7 @@ const ServiceList = ({ serviceList, serviceCart, setServiceCart }) => {
   });
   return (
     <div className="d-flex  flex-column my-3">
-      <h1 className="mb-4 text-center">Our best products</h1>
+      <h1 className="mb-4 text-center serviceTitle ">Our best products</h1>
       <div className="row gy-3">{serviceContent}</div>
     </div>
   );

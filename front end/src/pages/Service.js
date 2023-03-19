@@ -8,6 +8,7 @@ import imgFour from "../images/310330093_614064756924467_6633563874696938473_n.j
 import imgFive from "../images/72284422_435007003683634_3322992089263767552_n.jpg";
 import ServiceList from "../components/services/ServiceList";
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
+import "../components/services/Service.css";
 
 const Service = ({
   serviceList,
@@ -37,7 +38,7 @@ const Service = ({
     return (
       <>
         <div className="my-4 container text-center ">
-          <h1 className="mb-4">Making your dreams reality</h1>
+          <h1 className="mb-4 serviceTitle ">Making your dreams reality</h1>
           <Carousel fade>
             <Carousel.Item>
               <img className="d-block w-100" src={imgOne} alt="First slide" />
@@ -62,7 +63,7 @@ const Service = ({
             </Carousel.Item>
 
             <Carousel.Item>
-              <img className="d-block w-100" src={imgFour} alt="Third slide" />
+              <img className="d-block w-100" src={imgFour} alt="Fourth slide" />
 
               <Carousel.Caption>
                 <h3>{serviceList[3].title}</h3>
@@ -71,7 +72,7 @@ const Service = ({
             </Carousel.Item>
 
             <Carousel.Item>
-              <img className="d-block w-100" src={imgFive} alt="Third slide" />
+              <img className="d-block w-100" src={imgFive} alt="Fifth slide" />
 
               <Carousel.Caption>
                 <h3>{serviceList[4].title}</h3>

@@ -4,6 +4,9 @@ const BASE_URL_ARTICLES = "http://localhost:8080/articles/";
 const BASE_URL_SERVICES = "http://localhost:8080/services/";
 const BASE_URL_CUSTOMER = "http://localhost:8080/shop/customers/";
 const BASE_URL_FAQ = "http://localhost:8080/faqs/";
+const BASE_URL_COMMENT = "http://localhost:8080/blog/comments/";
+
+//////////// GET //////////////
 
 //GET subscriber by id
 export const getSubscriberId = async (id) => {
@@ -15,6 +18,86 @@ export const getSubscriberId = async (id) => {
     return { ok: false, data: error };
   }
 };
+
+// GET articles
+export const getArticles = async () => {
+  try {
+    const response = await fetch(BASE_URL_ARTICLES + "get");
+    const data = await response.json();
+    return { ok: response.ok, data: data };
+  } catch (error) {
+    return { ok: false, data: error };
+  }
+};
+
+// GET services
+export const getServices = async () => {
+  try {
+    const response = await fetch(BASE_URL_SERVICES + "get");
+    const data = await response.json();
+    return { ok: response.ok, data: data };
+  } catch (error) {
+    return { ok: false, data: error };
+  }
+};
+
+//GET customer
+export const getCustomerByEmail = async (email) => {
+  try {
+    const response = await fetch(BASE_URL_CUSTOMER + "admin/getemail/" + email);
+    const data = await response.json();
+    return { ok: response.ok, data: data };
+  } catch (error) {
+    return { ok: false, data: error };
+  }
+};
+
+//GET faq
+export const getFaq = async () => {
+  try {
+    const response = await fetch(BASE_URL_FAQ + "get");
+    const data = await response.json();
+    return { ok: response.ok, data: data };
+  } catch (error) {
+    return { ok: false, data: error };
+  }
+};
+
+//GET allSubscribers
+export const getAllSubscribers = async (firstName, lastName) => {
+  try {
+    const response = await fetch(
+      BASE_URL_SUBSCRIBERS +
+        "admin/get?firstName=" +
+        firstName +
+        "&lastName=" +
+        lastName
+    );
+    const data = await response.json();
+    return { ok: response.ok, data: data };
+  } catch (error) {
+    return { ok: false, data: error };
+  }
+};
+
+//GET allCustomers
+export const getAllCustomers = async (firstName, lastName) => {
+  try {
+    const response = await fetch(
+      BASE_URL_CUSTOMER +
+        "admin/get?firstName=" +
+        firstName +
+        "&lastName=" +
+        lastName
+    );
+    const data = await response.json();
+    return { ok: response.ok, data: data };
+  } catch (error) {
+    return { ok: false, data: error };
+  }
+};
+
+//////////// POST //////////////
 
 // POST subscriber
 export const postSubscriber = async (user) => {
@@ -84,17 +167,6 @@ export const logoutSubscriber = async (subscriber) => {
   }
 };
 
-// GET articles
-export const getArticles = async () => {
-  try {
-    const response = await fetch(BASE_URL_ARTICLES + "get");
-    const data = await response.json();
-    return { ok: response.ok, data: data };
-  } catch (error) {
-    return { ok: false, data: error };
-  }
-};
-
 //POST message
 export const postMessage = async (message, idSub, idArt) => {
   try {
@@ -108,17 +180,6 @@ export const postMessage = async (message, idSub, idArt) => {
         body: JSON.stringify(message),
       }
     );
-    const data = await response.json();
-    return { ok: response.ok, data: data };
-  } catch (error) {
-    return { ok: false, data: error };
-  }
-};
-
-// GET services
-export const getServices = async () => {
-  try {
-    const response = await fetch(BASE_URL_SERVICES + "get");
     const data = await response.json();
     return { ok: response.ok, data: data };
   } catch (error) {
@@ -150,16 +211,41 @@ export const postCustomerOrder = async (customer, service, quantity) => {
   }
 };
 
-//GET customer
-export const getCustomerByEmail = async (email) => {
+//POST message
+export const postService = async (serviceBody) => {
   try {
-    const response = await fetch(BASE_URL_CUSTOMER + "admin/getemail/" + email);
+    const response = await fetch(BASE_URL_SERVICES + "admin/post", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(serviceBody),
+    });
     const data = await response.json();
     return { ok: response.ok, data: data };
   } catch (error) {
     return { ok: false, data: error };
   }
 };
+
+//POST article
+export const postArticle = async (articleBody) => {
+  try {
+    const response = await fetch(BASE_URL_ARTICLES + "admin/post", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(articleBody),
+    });
+    const data = await response.json();
+    return { ok: response.ok, data: data };
+  } catch (error) {
+    return { ok: false, data: error };
+  }
+};
+
+//////////// PUT //////////////
 
 //PUT customer
 export const putCustomer = async (id, customer) => {
@@ -198,19 +284,6 @@ export const putOrder = async (customerId, orderId, orderBody) => {
   }
 };
 
-//DELETE subscriber
-export const deleteSubscriber = async (id) => {
-  try {
-    const response = await fetch(BASE_URL_SUBSCRIBERS + "delete/" + id, {
-      method: "DELETE",
-    });
-    const data = await response.json();
-    return { ok: response.ok, data: data };
-  } catch (error) {
-    return { ok: false, data: error };
-  }
-};
-
 //PUT subscriber
 export const putSubscriber = async (id, subscriber) => {
   try {
@@ -221,67 +294,6 @@ export const putSubscriber = async (id, subscriber) => {
       },
       body: JSON.stringify(subscriber),
     });
-    const data = await response.json();
-    return { ok: response.ok, data: data };
-  } catch (error) {
-    return { ok: false, data: error };
-  }
-};
-
-//DELETE comment
-export const deleteComment = async (idSubscriber, idComment) => {
-  try {
-    const response = await fetch(
-      BASE_URL_SUBSCRIBERS + idSubscriber + "/comments/" + idComment,
-      {
-        method: "DELETE",
-      }
-    );
-    const data = await response.json();
-    return { ok: response.ok, data: data };
-  } catch (error) {
-    return { ok: false, data: error };
-  }
-};
-
-//GET faq
-export const getFaq = async () => {
-  try {
-    const response = await fetch(BASE_URL_FAQ + "get");
-    const data = await response.json();
-    return { ok: response.ok, data: data };
-  } catch (error) {
-    return { ok: false, data: error };
-  }
-};
-
-//GET allSubscribers
-export const getAllSubscribers = async (firstName, lastName) => {
-  try {
-    const response = await fetch(
-      BASE_URL_SUBSCRIBERS +
-        "admin/get?firstName=" +
-        firstName +
-        "&lastName=" +
-        lastName
-    );
-    const data = await response.json();
-    return { ok: response.ok, data: data };
-  } catch (error) {
-    return { ok: false, data: error };
-  }
-};
-
-//GET allCustomers
-export const getAllCustomers = async (firstName, lastName) => {
-  try {
-    const response = await fetch(
-      BASE_URL_CUSTOMER +
-        "admin/get?firstName=" +
-        firstName +
-        "&lastName=" +
-        lastName
-    );
     const data = await response.json();
     return { ok: response.ok, data: data };
   } catch (error) {
@@ -309,6 +321,71 @@ export const putComment = async (idSubscriber, idComment, commentBody) => {
   }
 };
 
+//PUT service
+export const putService = async (idService, serviceBody) => {
+  try {
+    const response = await fetch(BASE_URL_SERVICES + "admin/put/" + idService, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(serviceBody),
+    });
+    const data = await response.json();
+    return { ok: response.ok, data: data };
+  } catch (error) {
+    return { ok: false, data: error };
+  }
+};
+
+//PUT article
+export const putArticle = async (idArticle, articleBody) => {
+  try {
+    const response = await fetch(BASE_URL_ARTICLES + "admin/put/" + idArticle, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(articleBody),
+    });
+    const data = await response.json();
+    return { ok: response.ok, data: data };
+  } catch (error) {
+    return { ok: false, data: error };
+  }
+};
+
+//////////// DELETE //////////////
+
+//DELETE subscriber
+export const deleteSubscriber = async (id) => {
+  try {
+    const response = await fetch(BASE_URL_SUBSCRIBERS + "delete/" + id, {
+      method: "DELETE",
+    });
+    const data = await response.json();
+    return { ok: response.ok, data: data };
+  } catch (error) {
+    return { ok: false, data: error };
+  }
+};
+
+//DELETE comment from subscriber
+export const deleteComment = async (idSubscriber, idComment) => {
+  try {
+    const response = await fetch(
+      BASE_URL_SUBSCRIBERS + idSubscriber + "/comments/" + idComment,
+      {
+        method: "DELETE",
+      }
+    );
+    const data = await response.json();
+    return { ok: response.ok, data: data };
+  } catch (error) {
+    return { ok: false, data: error };
+  }
+};
+
 //DELETE customer
 export const deleteCustomer = async (id) => {
   try {
@@ -327,6 +404,54 @@ export const deleteOrder = async (idCustomer, orderId) => {
   try {
     const response = await fetch(
       BASE_URL_CUSTOMER + "admin/" + idCustomer + "/servicesbought/" + orderId,
+      {
+        method: "DELETE",
+      }
+    );
+    const data = await response.json();
+    return { ok: response.ok, data: data };
+  } catch (error) {
+    return { ok: false, data: error };
+  }
+};
+
+//DELETE service
+export const deleteService = async (idService) => {
+  try {
+    const response = await fetch(
+      BASE_URL_SERVICES + "admin/delete/" + idService,
+      {
+        method: "DELETE",
+      }
+    );
+    const data = await response.json();
+    return { ok: response.ok, data: data };
+  } catch (error) {
+    return { ok: false, data: error };
+  }
+};
+
+//DELETE article
+export const deleteArticle = async (idArticle) => {
+  try {
+    const response = await fetch(
+      BASE_URL_ARTICLES + "admin/delete/" + idArticle,
+      {
+        method: "DELETE",
+      }
+    );
+    const data = await response.json();
+    return { ok: response.ok, data: data };
+  } catch (error) {
+    return { ok: false, data: error };
+  }
+};
+
+//DELETE comment
+export const deleteCommentAdmin = async (idComment) => {
+  try {
+    const response = await fetch(
+      BASE_URL_COMMENT + "admin/delete/" + idComment,
       {
         method: "DELETE",
       }

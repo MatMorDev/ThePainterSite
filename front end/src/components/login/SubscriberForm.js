@@ -113,7 +113,12 @@ const SubscriberForm = ({ handleToggle }) => {
             <p>Create a new account The Painter</p>
             <p>
               Already have a The Painter account? Awesome!
-              <Button id="toggle" variant="text" onClick={() => handleToggle()}>
+              <Button
+                id="toggle"
+                variant="text"
+                onClick={() => handleToggle()}
+                style={{ fontWeight: "bold", textDecoration: "underline" }}
+              >
                 Sign In here
               </Button>
             </p>

@@ -38,12 +38,12 @@ const CommentList = ({
   if (userComment.length === 0) {
     return commentList.map((comment) => {
       return (
-        <>
+        <div key={comment.id}>
           <Comment
             comment={comment}
             handleDeleteComment={handleDeleteComment}
           />
-        </>
+        </div>
       );
     });
   } else {

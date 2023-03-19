@@ -15,11 +15,26 @@ import {
   putCustomer,
   putOrder,
   deleteOrder,
+  getServices,
+  postService,
+  deleteService,
+  putService,
+  getArticles,
+  postArticle,
+  deleteArticle,
+  putArticle,
+  deleteCommentAdmin,
 } from "../../src/api";
 import "../components/admin/Admin.css";
 import AdminService from "../components/admin/AdminService";
 
-const Admin = () => {
+const Admin = ({
+  serviceList,
+  setServiceList,
+  articleList,
+  setArticleList,
+  loggedUser,
+}) => {
   const [toggleAdmin, setToggleAdmin] = useState("");
   const [subscribers, setSubscribers] = useState([]);
   const [customers, setCustomers] = useState([]);
@@ -54,17 +69,20 @@ const Admin = () => {
   };
   const handleDeleteComment = async (idSub, idComment) => {
     let tempSubscriber = [];
-    let tempComment = [];
-    let newComment = [];
+    let tempComments = [];
+    let newComments = [];
+    let newArticleList = [];
+
+    //elimino il commento dai subscriber nel dom
     subscribers.forEach((subscriber) => {
       if (subscriber.id !== idSub) {
         tempSubscriber.push(subscriber);
       }
       if (subscriber.id === idSub) {
-        tempComment = subscriber.comments;
-        tempComment.forEach((comment) => {
+        tempComments = subscriber.comments;
+        tempComments.forEach((comment) => {
           if (comment.id !== idComment) {
-            newComment.push(comment);
+            newComments.push(comment);
           }
         });
         tempSubscriber.push({
@@ -79,12 +97,35 @@ const Admin = () => {
           city: subscriber.city,
           cap: subscriber.cap,
           phoneNumber: subscriber.phoneNumber,
-          comments: newComment,
+          comments: newComments,
         });
+      }
+    });
+    //elimino il commento dagli article nel dom
+    articleList.forEach((article) => {
+      let found = false;
+      let artComments = article.comments;
+      artComments.forEach((comment) => {
+        if (comment.id === idComment) {
+          found = true;
+        }
+      });
+      if (found) {
+        newArticleList.push({
+          id: article.id,
+          title: article.title,
+          description: article.description,
+          category: article.category,
+          date: article.date,
+          comments: newComments,
+        });
+      } else {
+        newArticleList.push(article);
       }
     });
     console.log("comment deleted");
     setSubscribers(tempSubscriber);
+    setArticleList(newArticleList);
     deleteComment(idSub, idComment);
   };
   const handlePutSubscriber = async (id, subscriberBody) => {
@@ -252,149 +293,324 @@ const Admin = () => {
       }
     });
     setCustomers(tempCustomers);
-    console.log(result.ok, "Order deleted");
+    console.log(result.data, "Order deleted");
   };
   //////////////////////// END CUSTOMER/////////////////////////////////////
 
-  ///////////////////////ADMIN PAGE/////////////////////////////////////
+  ///////////////////////SERVICE/////////////////////////////////////
+  const handleService = async () => {
+    if (serviceList.length === 0) {
+      const result = await getServices();
+      setServiceList(result.data);
+    }
+  };
+  const handlePostService = async (serviceBody) => {
+    let newServiceList = [];
+    const result = await postService(serviceBody);
+    serviceList.forEach((service) => {
+      newServiceList.push(service);
+    });
+    newServiceList.push(result.data);
+    setServiceList(newServiceList);
+    console.log("service created");
+  };
+  const handleDeleteService = (idService) => {
+    let newServiceList = [];
+    serviceList.forEach((service) => {
+      if (service.id !== idService) {
+        newServiceList.push(service);
+      }
+    });
+    setServiceList(newServiceList);
+    deleteService(idService);
+    console.log("service deleted");
+  };
+  const handlePutService = async (idService, serviceBody) => {
+    const result = await putService(idService, serviceBody);
+    let newServiceList = [];
+    serviceList.forEach((service) => {
+      if (service.id !== idService) {
+        newServiceList.push(service);
+      }
+      if (service.id === idService) {
+        newServiceList.push(result.data);
+      }
+    });
+    setServiceList(newServiceList);
+  };
+  //////////////////////SERVICE END/////////////////////////////////
 
-  //////////////////////ADMIN PAGE END/////////////////////////////////
+  //////////////////////ARTICLE/////////////////////////////////////
+  const handleArticle = async () => {
+    if (articleList.length === 0) {
+      const result = await getArticles();
+      setArticleList(result.data);
+    }
+  };
+  const handlePostArticle = async (articleBody) => {
+    let newArticleList = [];
+    const result = await postArticle(articleBody);
+    articleList.forEach((article) => {
+      newArticleList.push(article);
+    });
+    newArticleList.push(result.data);
+    setArticleList(newArticleList);
+    console.log("create new article");
+  };
+  const handleDeleteArticle = (idArticle) => {
+    let newArticleList = [];
+    articleList.forEach((article) => {
+      if (article.id !== parseInt(idArticle)) {
+        newArticleList.push(article);
+      }
+    });
+    setArticleList(newArticleList);
+    deleteArticle(idArticle);
+    console.log("article deleted");
+  };
+  const handlePutArticle = async (idArticle, articleBody) => {
+    const result = await putArticle(idArticle, articleBody);
+    let newArticleList = [];
+    articleList.forEach((article) => {
+      if (article.id !== idArticle) {
+        newArticleList.push(article);
+      }
+      if (article.id === idArticle) {
+        newArticleList.push(result.data);
+      }
+    });
+    setArticleList(newArticleList);
+  };
+  const handleDeleteCommentId = (idComment, idArticle) => {
+    const id = parseInt(idArticle);
+    let newArticleList = [];
+    let newSubscriberList = [];
+    let newCommentList = [];
 
-  //selettore per il pannello admin
-  let content = <></>;
-  switch (toggleAdmin) {
-    case "main":
-      content = (
-        <div>
-          <AdminService customers={customers} />
-        </div>
-      );
-      break;
-    case "subscribers":
-      content = (
-        <div className="contentDiv">
-          <Row className="contentDivTitle">
-            <Col>(Id) Username</Col>
-            <Col>
-              First name<div>Last name</div>
-            </Col>
-            <Col>Date of birth</Col>
-            <Col>Email</Col>
-            <Col>Address</Col>
-            <Col>City - Cap</Col>
-            <Col>Phone number</Col>
-          </Row>
-          <SubscribersContent
-            subscribers={subscribers}
-            handleDeleteSubscriber={handleDeleteSubscriber}
-            handleDeleteComment={handleDeleteComment}
-            handlePutSubscriber={handlePutSubscriber}
-            handlePutComment={handlePutComment}
-          />
-        </div>
-      );
-      break;
-    case "customers":
-      content = (
-        <div className="contentDiv">
-          <Row className="contentDivTitle">
-            <Col>(Id)</Col>
-            <Col>
-              First name<div>Last name</div>
-            </Col>
-            <Col>Date of birth</Col>
-            <Col>Email</Col>
-            <Col>Address</Col>
-            <Col>City - Cap</Col>
-            <Col>Phone number</Col>
-          </Row>
-          <CustomersContent
-            customers={customers}
-            handlePutCustomer={handlePutCustomer}
-            handleDeleteCustomer={handleDeleteCustomer}
-            handlePutOrder={handlePutOrder}
-            handleDeleteOrder={handleDeleteOrder}
-          />
-        </div>
-      );
-      break;
-    case "services":
-      content = <ServicesContent />;
-      break;
-    case "articles":
-      content = <ArticlesContent />;
-      break;
-    default:
-      content = <h1>Select a button to start</h1>;
-      break;
-  }
+    // elimino dalla lista di articoli nel dom i commenti
+    articleList.forEach((article) => {
+      if (article.id !== id) {
+        newArticleList.push(article);
+      }
+      if (article.id === id) {
+        article.comments.forEach((comment) => {
+          if (comment.id !== idComment) {
+            newCommentList.push(comment);
+          }
+          newArticleList.push({
+            id: article.id,
+            title: article.title,
+            description: article.description,
+            category: article.category,
+            date: article.date,
+            comments: newCommentList,
+          });
+        });
+      }
+    });
+    // elimino dalla lista di subscriber nel dom i commenti
+    subscribers.forEach((subscriber) => {
+      let found = false;
+      let subComments = subscriber.comments;
+      subComments.forEach((comment) => {
+        if (comment.id === idComment) {
+          found = true;
+        }
+      });
+      if (found) {
+        newSubscriberList.push({
+          id: subscriber.id,
+          username: subscriber.username,
+          password: subscriber.password,
+          firstName: subscriber.firstName,
+          lastName: subscriber.lastName,
+          dateOfBirth: subscriber.dateOfBirth,
+          email: subscriber.email,
+          address: subscriber.address,
+          city: subscriber.city,
+          cap: subscriber.cap,
+          phoneNumber: subscriber.phoneNumber,
+          comments: newCommentList,
+        });
+      } else {
+        newSubscriberList.push(subscriber);
+      }
+    });
+    setSubscribers(newSubscriberList);
+    setArticleList(newArticleList);
+    deleteCommentAdmin(idComment);
+    console.log("comment deleted");
+  };
+  //////////////////////ARTICLE END/////////////////////////////////
+
   useEffect(() => {
     handleSubscriber();
     handleCustomer();
+    handleService();
+    handleArticle();
+    // eslint-disable-next-line
   }, []);
 
-  return (
-    <>
-      <div className="mx-1">
-        <Row className="mt-3">
-          <Col sm={2} className="d-flex flex-column">
-            <Button
-              className="m-2"
-              variant="dark"
-              value="main"
-              onClick={(e) => {
-                handleToggleAdmin(e.target.value);
-              }}
-            >
-              Main page
-            </Button>
-            <Button
-              className="m-2"
-              variant="secondary"
-              value="subscribers"
-              onClick={(e) => {
-                handleToggleAdmin(e.target.value);
-              }}
-            >
-              Subscribers
-            </Button>
-            <Button
-              className="m-2"
-              variant="secondary"
-              value="customers"
-              onClick={(e) => {
-                handleToggleAdmin(e.target.value);
-              }}
-            >
-              Customers
-            </Button>
-            <Button
-              className="m-2"
-              variant="secondary"
-              value="services"
-              onClick={(e) => {
-                handleToggleAdmin(e.target.value);
-              }}
-            >
-              Services
-            </Button>
-            <Button
-              className="m-2"
-              variant="secondary"
-              value="articles"
-              onClick={(e) => {
-                handleToggleAdmin(e.target.value);
-              }}
-            >
-              Articles
-            </Button>
-          </Col>
-          <Col sm>
-            <div>{content}</div>
-          </Col>
-        </Row>
-      </div>
-    </>
+  // simulazione accesso eslusivo per l'admin
+  let contentAdminPage = (
+    <div className="m-5 text-center display-3">
+      <span style={{ color: "red", fontWeight: "bold" }}>
+        Page restricted only to admin
+      </span>
+    </div>
   );
+
+  if (loggedUser.idSub === 1) {
+    //selettore per il pannello admin
+    let content = <></>;
+    switch (toggleAdmin) {
+      case "main":
+        content = (
+          <div>
+            <AdminService customers={customers} />
+          </div>
+        );
+        break;
+      case "subscribers":
+        content = (
+          <div className="contentDiv">
+            <Row className="contentDivTitle">
+              <Col>(Id) Username</Col>
+              <Col>
+                First name<div>Last name</div>
+              </Col>
+              <Col>Date of birth</Col>
+              <Col>Email</Col>
+              <Col>Address</Col>
+              <Col>City - Cap</Col>
+              <Col>Phone number</Col>
+            </Row>
+            <SubscribersContent
+              subscribers={subscribers}
+              handleDeleteSubscriber={handleDeleteSubscriber}
+              handleDeleteComment={handleDeleteComment}
+              handlePutSubscriber={handlePutSubscriber}
+              handlePutComment={handlePutComment}
+            />
+          </div>
+        );
+        break;
+      case "customers":
+        content = (
+          <div className="contentDiv">
+            <Row className="contentDivTitle">
+              <Col>(Id)</Col>
+              <Col>
+                First name<div>Last name</div>
+              </Col>
+              <Col>Date of birth</Col>
+              <Col>Email</Col>
+              <Col>Address</Col>
+              <Col>City - Cap</Col>
+              <Col>Phone number</Col>
+            </Row>
+            <CustomersContent
+              customers={customers}
+              handlePutCustomer={handlePutCustomer}
+              handleDeleteCustomer={handleDeleteCustomer}
+              handlePutOrder={handlePutOrder}
+              handleDeleteOrder={handleDeleteOrder}
+            />
+          </div>
+        );
+        break;
+      case "services":
+        content = (
+          <ServicesContent
+            serviceList={serviceList}
+            handlePostService={handlePostService}
+            handleDeleteService={handleDeleteService}
+            handlePutService={handlePutService}
+          />
+        );
+        break;
+      case "articles":
+        content = (
+          <ArticlesContent
+            articleList={articleList}
+            setArticleList={setArticleList}
+            handlePostArticle={handlePostArticle}
+            handleDeleteArticle={handleDeleteArticle}
+            handlePutArticle={handlePutArticle}
+            handleDeleteCommentId={handleDeleteCommentId}
+          />
+        );
+        break;
+      default:
+        content = <h1>Select a button to start</h1>;
+        break;
+    }
+
+    return (
+      <>
+        <div className="mx-1">
+          <Row className="mt-3">
+            <Col sm={2} className="d-flex flex-column">
+              <Button
+                className="m-2"
+                variant="dark"
+                value="main"
+                onClick={(e) => {
+                  handleToggleAdmin(e.target.value);
+                }}
+              >
+                Main page
+              </Button>
+              <Button
+                className="m-2"
+                variant="secondary"
+                value="subscribers"
+                onClick={(e) => {
+                  handleToggleAdmin(e.target.value);
+                }}
+              >
+                Subscribers
+              </Button>
+              <Button
+                className="m-2"
+                variant="secondary"
+                value="customers"
+                onClick={(e) => {
+                  handleToggleAdmin(e.target.value);
+                }}
+              >
+                Customers
+              </Button>
+              <Button
+                className="m-2"
+                variant="secondary"
+                value="services"
+                onClick={(e) => {
+                  handleToggleAdmin(e.target.value);
+                }}
+              >
+                Services
+              </Button>
+              <Button
+                className="m-2"
+                variant="secondary"
+                value="articles"
+                onClick={(e) => {
+                  handleToggleAdmin(e.target.value);
+                }}
+              >
+                Articles
+              </Button>
+            </Col>
+            <Col sm>
+              <div>{content}</div>
+            </Col>
+          </Row>
+        </div>
+      </>
+    );
+  } else {
+    return <>{contentAdminPage}</>;
+  }
 };
 export default Admin;

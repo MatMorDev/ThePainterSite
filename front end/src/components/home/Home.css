@@ -1,0 +1,53 @@
+.homeDiv {
+  height: 50%;
+  width: 100%;
+  background-color: #212529b5;
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  text-align: center;
+  color: rgb(247, 251, 255);
+  text-shadow: 0 0 3px black, 0 0 5px rgb(255, 0, 0);
+}
+.title {
+  font-size: 10vw;
+}
+.subTitle,
+.titleAbout {
+  color: rgb(182, 20, 20);
+  text-shadow: 0 0 10px rgba(26, 26, 26, 0.66);
+  font-weight: bold;
+}
+.subTitle:hover {
+  color: orange;
+  text-shadow: 2px 2px 5px orange;
+}
+.cardShadow {
+  box-shadow: 5px 5px 10px 10px rgba(26, 26, 26, 0.199);
+}
+.firstCard:hover {
+  box-shadow: 5px 5px 10px 10px rgba(120, 198, 12, 0.632);
+}
+.secondCard:hover {
+  box-shadow: 5px 5px 10px 10px rgba(62, 12, 198, 0.632);
+}
+.thirdCard:hover {
+  box-shadow: 5px 5px 10px 10px rgba(198, 43, 12, 0.632);
+}
+.divMarine {
+  border-top: solid 5px rgb(247, 251, 255);
+  border-bottom: solid 5px rgb(247, 251, 255);
+  top: 60%;
+  width: 100%;
+  background-color: #212529b5;
+  color: rgb(247, 251, 255);
+  text-shadow: 0 0 3px black, 0 0 5px rgb(255, 0, 0);
+}
+.linkMarine {
+  color: rgb(247, 251, 255);
+  text-decoration: none;
+}
+.linkMarine:hover {
+  color: orange;
+  text-shadow: 2px 2px 5px orange;
+}

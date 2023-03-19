@@ -21,7 +21,7 @@ const Service = ({ service, arrayImg, serviceCart, setServiceCart }) => {
     if (itemIsPresent(thisItem)) {
       let oldQuantity = 0;
       let newCart = [];
-      serviceCart.map((el) => {
+      serviceCart.forEach((el) => {
         if (el.id === thisItem.id) {
           oldQuantity = el.quantity;
           newCart.push(
@@ -59,11 +59,15 @@ const Service = ({ service, arrayImg, serviceCart, setServiceCart }) => {
           style={{ height: "100%" }}
         />
       </div>
-      <div className="card-body d-flex justify-content-center flex-wrap p-3">
+      <div className="card-body d-flex flex-wrap p-3 flex-column text-center">
         <h4>{service.title}</h4>
-        <p className="mb-2">
-          {service.description} {service.price}€
-        </p>
+        <div className="mb-2">
+          {service.description}
+          <div className="d-flex align-items-center justify-content-center">
+            Price: <span className="display-6 mx-1">{service.price}</span>
+            <span style={{ fontSize: "x-large" }}>&#8364;</span>
+          </div>
+        </div>
         <Brush value={service.rate} max={5} idService={service.id} />
       </div>
       <div className="card-footer d-flex justify-content-center flex-wrap">

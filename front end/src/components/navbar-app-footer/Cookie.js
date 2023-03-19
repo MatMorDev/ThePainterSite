@@ -33,11 +33,10 @@ const CookieModal = ({ handleCookie }) => {
       <Modal.Body className="modalBody">
         <Row>
           <p className="p">
-            Usiamo i cookies per fornirti contenuti e pubblicità personalizzati,
-            per mostrarti i contenuti social media che vuoi vedere e per
-            analizzare il nostro traffico. Potremmo condividere le informazioni
-            sul tuo utilizzo del sito con i nostri partner dei social media,
-            pubblicitari e analitici.
+            We use cookies to give you personalised content and adverts, provide
+            you social media content you'll want to see and to analyse our
+            traffic. We may share information about how you use the site with
+            social media, advertising, and analytics partners.
           </p>
         </Row>
         <Row>
@@ -48,7 +47,7 @@ const CookieModal = ({ handleCookie }) => {
               onClick={(event) => handleClose(event)}
               className="c_button w-100 h-100"
             >
-              Accetta i cookies
+              Accept Cookies
             </Button>
           </Col>
           <Col md={12} lg={4} className="mt-3">
@@ -58,7 +57,7 @@ const CookieModal = ({ handleCookie }) => {
               onClick={(event) => handleClose(event)}
               className="c_button w-100 h-100"
             >
-              Rifiuta tutti
+              Reject Cookies
             </Button>
           </Col>
           <Col md={12} lg={4} className="mt-3">
@@ -68,7 +67,7 @@ const CookieModal = ({ handleCookie }) => {
               onClick={(event) => handleClose(event)}
               className="c_button w-100 h-100 "
             >
-              Impostazioni dei cookies
+              Cookies Settings
             </Button>
           </Col>
         </Row>

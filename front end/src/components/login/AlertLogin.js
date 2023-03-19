@@ -14,6 +14,7 @@ const AlertLogin = ({ loggedUser, lastUser, setLastUser }) => {
         setShow(false);
       }, 1500);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedUser]);
 
   return (

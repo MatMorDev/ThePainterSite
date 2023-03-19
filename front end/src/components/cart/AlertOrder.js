@@ -12,16 +12,16 @@ const AlertOrder = ({ showCompleted, setShowCompleted }) => {
         backdrop="true"
         animation="true"
         show={showCompleted}
-        className="d-flex "
+        className="d-flex"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header>
+        <Modal.Header className="headModal">
           <Modal.Title>
-            <h1>Successfully placed the order</h1>
+            <h1>Congratulations! Your order has been placed!</h1>
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body className="bodyModal">
           <p>Now your order has been loaded correctly. </p>
           <p>
             You will receive an email to complete the payment or click on the
@@ -51,7 +51,7 @@ const AlertOrder = ({ showCompleted, setShowCompleted }) => {
             via the "Contact" section.
           </p>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className="footerModal">
           <Button
             variant="secondary"
             onClick={() => {

@@ -106,7 +106,7 @@ const Footer = () => {
           </Col>
         </Row>
       </div>
-      <Row className="text-center py-3  footerFinalRow ">
+      <Row className="text-center py-3 footerFinalRow m-0">
         <Col>
           Matteo Mor 2023 - The Painter - Italy | contact@thepainter.com
         </Col>

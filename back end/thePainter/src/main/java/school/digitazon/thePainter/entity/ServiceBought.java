@@ -95,5 +95,4 @@ public class ServiceBought {
         this.customers = customers;
     }
 
-
 }

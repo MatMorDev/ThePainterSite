@@ -15,3 +15,17 @@
   text-shadow: 2px 2px 5px orange;
   border-color: orange;
 }
+.headModal {
+  border-top: solid 4px #8b1c0d;
+  border-left: solid 4px #8b1c0d;
+  border-right: solid 4px #8b1c0d;
+}
+.bodyModal {
+  border-left: solid 4px #8b1c0d;
+  border-right: solid 4px #8b1c0d;
+}
+.footerModal {
+  border-bottom: solid 4px#8b1c0d;
+  border-left: solid 4px #8b1c0d;
+  border-right: solid 4px#8b1c0d;
+}

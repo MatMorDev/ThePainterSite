@@ -221,27 +221,27 @@ public class CustomerController {
             List<ServiceBought> customerOrders = customerResult.get().getServiceBought();
             boolean found = false;
             for (ServiceBought order:customerOrders) {
-               found = (idSerBought == order.getId()) ? true : false ;
+                found = (idSerBought == order.getId()) ? true : false ;
+                if (found) {
+                    // rimuovo associazione da entrambi i lati in customer_bought_services
+                    Customer customer = customerResult.get();
+                    ServiceBought serviceBought = serBoughtResult.get();
+                    customer.getServiceBought().remove(serviceBought);
+                    serviceBought.getCustomers().remove(customer);
+                    customerRepository.save(customer);
+                    // rimuovo associazione da entrambi i lati in service_bought_service
+                    Service service = serviceBought.getService().get(0);
+                    service.getServiceBought().remove(serviceBought);
+                    serviceBought.getService().remove(service);
+                    serviceRepository.save(service);
+                    // rimuovo l'ordine ServiceBought
+                    serviceBoughtRepository.deleteById(idSerBought);
+                    return customer.getServiceBought();
+                }
             }
-            if(found){
-            // rimuovo associazione da entrambi i lati in customer_bought_services
-            Customer customer = customerResult.get();
-            ServiceBought serviceBought = serBoughtResult.get();
-            customer.getServiceBought().remove(serviceBought);
-            serviceBought.getCustomers().remove(customer);
-            customerRepository.save(customer);
-            // rimuovo associazione da entrambi i lati in service_bought_service
-            Service service = serviceBought.getService().get(0);
-            service.getServiceBought().remove(serviceBought);
-            serviceBought.getService().remove(service);
-            serviceRepository.save(service);
-            // rimuovo l'ordine ServiceBought
-            serviceBoughtRepository.deleteById(idSerBought);
-            return customer.getServiceBought();
-            } else{
-                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Customer id: "+ idCustomer
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Customer id: " + idCustomer
                         + " hasn't this order with id: " + idSerBought);
-            }
+
         } else {
             String message = "";
             if (customerResult.isEmpty()) {

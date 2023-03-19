@@ -5,11 +5,7 @@ const WebHead = () => {
   return (
     <>
       <a href=".">
-        <Image
-          src={logo}
-          className="img-fluid shadow-4 ml-2 me-3"
-          alt="website logo"
-        ></Image>
+        <Image src={logo} className="img-fluid m-0" alt="website logo"></Image>
       </a>
     </>
   );
