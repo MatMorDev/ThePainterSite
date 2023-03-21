@@ -1,3 +1,3 @@
 # ThePainterSite
-final trainee project for DigitazonTechSchool
+Final trainee project for DigitazonTechSchool
 
