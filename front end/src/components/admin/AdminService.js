@@ -5,7 +5,7 @@ import { Container } from "react-bootstrap";
 const AdminService = ({ customers }) => {
   const [allOrders, setAllOrders] = useState({});
   const [allUserOrder, setAllUserOrder] = useState({});
-
+  console.log(allUserOrder);
   // ad inizio mi suddivide gli ordini che trova
   const handleOrders = () => {
     let allOrdersTemp = [];
