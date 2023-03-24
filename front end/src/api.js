@@ -97,6 +97,18 @@ export const getAllCustomers = async (firstName, lastName) => {
   }
 };
 
+//GET order by id
+export const getOrderId = async (id) => {
+  try {
+    const response = await fetch(BASE_URL_CUSTOMER + id + "/servicesbought");
+    const data = await response.json();
+    console.log(data);
+    return { ok: response.ok, data: data };
+  } catch (error) {
+    return { ok: false, data: error };
+  }
+};
+
 //////////// POST //////////////
 
 // POST subscriber
