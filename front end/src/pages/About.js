@@ -3,7 +3,7 @@ import { Card, Image } from "react-bootstrap";
 import AccordionFaq from "../components/home/AccordionFaq";
 import { getFaq } from "../api";
 import { useEffect } from "react";
-import imgTitan from "../images/240122770_1807204326117861_2821253475101208864_n.jpg";
+import imgTanks from "../images/tanks-resized.jpg";
 import logo from "../utilities/logo-navbar.png";
 const About = ({ setFaqList, faqList }) => {
   const navigate = useNavigate();
@@ -30,8 +30,8 @@ const About = ({ setFaqList, faqList }) => {
       <div>
         <img
           className="img-fluid"
-          alt="titan"
-          src={imgTitan}
+          alt="tanks-resized"
+          src={imgTanks}
           style={{
             width: "auto",
             height: "100%",

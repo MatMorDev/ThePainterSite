@@ -5,8 +5,8 @@ import { FaPaintBrush, FaDiscord } from "react-icons/fa";
 import { BsPaletteFill } from "react-icons/bs";
 import "../components/home/Home.css";
 import AlertLogin from "../components/login/AlertLogin";
-import imgTau from "../images/wobbly-moddelers-tau.jpg";
-import imgService from "../images/330541983_1256525858291914_5357580641972081587_n.jpg";
+import imgCorvusCabalWarband from "../images/corvus-cabal-resized.jpg";
+import imgCommback from "../images/commissar-back.png";
 import Image from "react-bootstrap/Image";
 import logo from "../utilities/logo-navbar.png";
 
@@ -21,9 +21,9 @@ const Home = ({ handleCookie, cookie, lastUser, setLastUser, loggedUser }) => {
     <div className="mb-5">
       <div className="position-relative">
         <img
-          src={imgTau}
+          src={imgCorvusCabalWarband}
           className="img-fluid"
-          alt="tauHeader"
+          alt="corvus-cabal-warband"
           style={{ width: "100%" }}
         />
         <div className="homeDiv">
@@ -109,9 +109,9 @@ const Home = ({ handleCookie, cookie, lastUser, setLastUser, loggedUser }) => {
           <Col sm={12} md={12} lg={12}>
             <Card>
               <img
-                src={imgService}
+                src={imgCommback}
                 className="img-fluid cardShadow position-relative"
-                alt="spaceMarine"
+                alt="commissar-background"
                 style={{ width: "100%" }}
               />
               <div className="text-center mb-3 position-absolute divMarine">

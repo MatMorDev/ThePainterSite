@@ -1,0 +1,1098 @@
+{
+	"info": {
+		"_postman_id": "520e9a21-6b58-4a12-b204-a6a6f98e12e9",
+		"name": "PainterWebsite",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25285637"
+	},
+	"item": [
+		{
+			"name": "Subscriber",
+			"item": [
+				{
+					"name": "Find All or search with fist or last name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/subscribers/admin/get?firstName=&lastName=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscribers",
+								"admin",
+								"get"
+							],
+							"query": [
+								{
+									"key": "firstName",
+									"value": ""
+								},
+								{
+									"key": "lastName",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get subscriber by username FOR USER",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/subscribers/user/username?username=destr",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscribers",
+								"user",
+								"username"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "destr"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get subscriber by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/subscribers/admin/get/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscribers",
+								"admin",
+								"get",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post crea un nuovo subscriber",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"newPainter\",\r\n    \"password\": \"kkFFg55!!\",\r\n    \"firstName\": \"Mattia\",\r\n    \"lastName\": \"Grey\",\r\n    \"dateOfBirth\": \"1988-07-16\",\r\n    \"email\": \"mattGreeev2@gmail.com\",\r\n    \"address\": \"Via Genovesi 7\",\r\n    \"city\":\"Milano\",\r\n    \"cap\": 20019,\r\n    \"phoneNumber\":\"+39344455588\",\r\n    \"comments\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscribers/user/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscribers",
+								"user",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put modifica un subscriber",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"cambiatoUsername\",\r\n    \"password\": \"kkFFg55!!\",\r\n    \"firstName\": \"Giorgio\",\r\n    \"lastName\": \"Cobalt\",\r\n    \"dateOfBirth\": \"1999-07-30\",\r\n    \"email\": \"gioCob4444@gmail.com\",\r\n    \"address\": \"Via fasulla 123\",\r\n    \"city\": \"Mordor\",\r\n    \"cap\": 666666,\r\n    \"phoneNumber\": \"+39mordorCall\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscribers/admin/put/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscribers",
+								"admin",
+								"put",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete subscriber by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/subscribers/delete/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscribers",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get subscriber comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/subscribers/2/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscribers",
+								"2",
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post crea un nuovo commento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"content\": \"Grazie, ti contatterò quanto prima!\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscribers/5/comments/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscribers",
+								"5",
+								"comments",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put modifica un commento di un subscriber",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"content\": \"Grazie, ti ho appena mandato un messaggio, ciao!\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/subscribers/5/comments/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscribers",
+								"5",
+								"comments",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete comment di un subscriber",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/subscribers/5/comments/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"subscribers",
+								"5",
+								"comments",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login user or admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"PaoloWH40K\",\r\n    \"password\": \"passAA!@a3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/logins/user/username/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logins",
+								"user",
+								"username",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "Find All or search with fist or last name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/shop/customers/admin/get?firstName=paolo&lastName=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shop",
+								"customers",
+								"admin",
+								"get"
+							],
+							"query": [
+								{
+									"key": "firstName",
+									"value": "paolo"
+								},
+								{
+									"key": "lastName",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get customer by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/shop/customers/admin/get/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shop",
+								"customers",
+								"admin",
+								"get",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET by email customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/shop/customers/admin/getemail/paolo22@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shop",
+								"customers",
+								"admin",
+								"getemail",
+								"paolo22@gmail.com"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post crea un nuovo customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"prOv4!!pAss\",\r\n    \"firstName\": \"Claudio\",\r\n    \"lastName\": \"Porpora\",\r\n    \"dateOfBirth\": \"2003-09-05\",\r\n    \"email\": \"claudio33@gmail.com\",\r\n    \"address\": \"Via Marche 64/A\",\r\n    \"city\": \"Firenze\",\r\n    \"cap\": 50100,\r\n    \"phoneNumber\": \"+39373849222\",\r\n    \"serviceBought\":[]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/shop/customers/user/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shop",
+								"customers",
+								"user",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put modifica un customer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"prOv4!!pAss\",\r\n    \"firstName\": \"Emanuele\",\r\n    \"lastName\": \"Bianchi\",\r\n    \"dateOfBirth\": \"2003-09-05\",\r\n    \"email\": \"ema445@gmail.com\",\r\n    \"address\": \"Via Governo 33\",\r\n    \"city\": \"Firenze\",\r\n    \"cap\": 50100,\r\n    \"phoneNumber\": \"+39324343343\",\r\n    \"serviceBought\":[]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/shop/customers/admin/put/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shop",
+								"customers",
+								"admin",
+								"put",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete customer by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/shop/customers/admin/delete/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shop",
+								"customers",
+								"admin",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get customer services bought",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/shop/customers/2/servicesbought",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shop",
+								"customers",
+								"2",
+								"servicesbought"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post new customer order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/shop/customers/2/servicesbought/3qty=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shop",
+								"customers",
+								"2",
+								"servicesbought",
+								"3qty=2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put modifica di un ordine del customer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"quantity\": 30,\r\n    \"paid\": true,\r\n    \"orderStatus\": \"DELIVERED\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/shop/customers/admin/2/servicesbought/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shop",
+								"customers",
+								"admin",
+								"2",
+								"servicesbought",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete order from a customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/shop/customers/admin/2/servicesbought/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"shop",
+								"customers",
+								"admin",
+								"2",
+								"servicesbought",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Service",
+			"item": [
+				{
+					"name": "Get all service or serach with title description",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/services/get?title&description",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"services",
+								"get"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": null
+								},
+								{
+									"key": "description",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get service by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/services/get/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"services",
+								"get",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new service",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"img\": \"\",\r\n    \"title\": \"True supporter\",\r\n    \"description\": \"Abbonamento di un anno agli articoli ed ai tutorial esclusivi. Ogni mese riceverai al tuo indirizzo una email con il link per scaricare la guida per dipingere, avrai pieno accesso alle sezioni di tutorial ed al server Discord dove puoi inviarmi le tue creazioni e farmi domande!  \",\r\n    \"price\": \"180\",\r\n    \"rate\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/services/admin/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"services",
+								"admin",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify  service Copy",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n        \"img\": \"\",\r\n        \"title\": \"Ready to play standard\",\r\n        \"description\": \"Sempre almeno tre colori o più per miniatura, lavatura con più di un wash, highlights di base, piccole personalizzazioni. Se ti servono molte miniature dipinte e vuoi subito giocare allora questo fa per te!\",\r\n        \"price\": \"4\",\r\n        \"rate\": 2\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/services/admin/put/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"services",
+								"admin",
+								"put",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete service by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/services/admin/delete/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"services",
+								"admin",
+								"delete",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Article",
+			"item": [
+				{
+					"name": "Get all article",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/articles/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"articles",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get search article by tile description",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/articles/get?title=&description=glazing",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"articles",
+								"get"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": ""
+								},
+								{
+									"key": "description",
+									"value": "glazing"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get article by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/articles/get/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"articles",
+								"get",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get article by category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/articles/category/get?category=inter",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"articles",
+								"category",
+								"get"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "inter"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post new article",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"title\": \"How to create a new article\",\r\n        \"description\": \"New article for testing\",\r\n        \"category\": \"Advanced\",\r\n        \"date\": \"2023-03-03\",\r\n        \"comments\": []\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/articles/admin/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"articles",
+								"admin",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put modify an article",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"title\": \"How to modify an article\",\r\n        \"description\": \"Article modified\",\r\n        \"category\": \"Challenging\",\r\n        \"date\": \"2023-03-03\",\r\n        \"comments\": []\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/articles/admin/put/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"articles",
+								"admin",
+								"put",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete article by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/articles/admin/delete/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"articles",
+								"admin",
+								"delete",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete comment by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/blog/comments/admin/delete/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"blog",
+								"comments",
+								"admin",
+								"delete",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Answer",
+			"item": [
+				{
+					"name": "Get all faqs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/faqs/get",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"faqs",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search faq question answer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/faqs/get?question=sped&answer=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"faqs",
+								"get"
+							],
+							"query": [
+								{
+									"key": "question",
+									"value": "sped"
+								},
+								{
+									"key": "answer",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get faqs by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/faqs/get/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"faqs",
+								"get",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post create new faq",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"question\": \"Posso acquistare solo mensilmente l'accesso alle sezioni premium ed al discord server anziché annualmente?\",\r\n        \"answer\": \"Si, prevediamo anche un piano mensile che è disdicibile in ogni momento. Nel caso del piano annuale viene previsto anche uno sconto!\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/faqs/admin/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"faqs",
+								"admin",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Modify faq",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"question\": \"You modified this question\",\r\n        \"answer\": \"Yes, you modified this answer too\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/faqs/admin/put/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"faqs",
+								"admin",
+								"put",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete faq",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/faqs/admin/delete/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"faqs",
+								"admin",
+								"delete",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

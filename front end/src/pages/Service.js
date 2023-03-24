@@ -1,11 +1,11 @@
 import { getServices } from "../api";
 import { useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import imgOne from "../images/320333034_674716350869815_146148279957736682_n.jpg";
-import imgTwo from "../images/1815-iron-heart-arnau-lazaro.jpg";
-import imgThree from "../images/306565222_595634298767513_1694876367040829990_n.jpg";
-import imgFour from "../images/310330093_614064756924467_6633563874696938473_n.jpg";
-import imgFive from "../images/72284422_435007003683634_3322992089263767552_n.jpg";
+import imgOne from "../images/watching.jpg";
+import imgTwo from "../images/tzangor-mini-resized.jpg";
+import imgThree from "../images/tank+manticore.jpg";
+import imgFour from "../images/artorias.jpg";
+import imgFive from "../images/commissar1.jpg";
 import ServiceList from "../components/services/ServiceList";
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import "../components/services/Service.css";
@@ -85,6 +85,11 @@ const Service = ({
             serviceList={serviceList}
             serviceCart={serviceCart}
             setServiceCart={setServiceCart}
+            imgOne={imgOne}
+            imgTwo={imgTwo}
+            imgThree={imgThree}
+            imgFour={imgFour}
+            imgFive={imgFive}
           />
           <BsFillArrowUpCircleFill
             id="arrowUp"

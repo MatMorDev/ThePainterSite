@@ -1,4 +1,4 @@
-import imgContact from "../images/Fdcx0EuXEAEVxuF.jpg";
+import imgContact from "../images/artorias-mini-back.png";
 import { Button, Form, Container, Row, Col } from "react-bootstrap";
 import "../components/contact/Contact.css";
 
@@ -9,7 +9,7 @@ const Contact = () => {
         <img
           src={imgContact}
           className="img-fluid img-chaos"
-          alt="chaos-miniature"
+          alt="artorias-abysswalker"
           style={{ height: "100%", width: "100%" }}
         />
         <div
@@ -17,7 +17,7 @@ const Contact = () => {
           style={{
             height: "100%",
             width: "100%",
-            backgroundColor: "rgba(0, 0, 0, 0.60)",
+            backgroundColor: "rgba(0, 0, 0, 0.30)",
             color: " #fff8cd",
             top: "0",
             left: "0",

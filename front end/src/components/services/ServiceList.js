@@ -1,12 +1,15 @@
-import imgTwo from "../../images/1815-iron-heart-arnau-lazaro.jpg";
-import imgFive from "../../images/72284422_435007003683634_3322992089263767552_n.jpg";
-import imgThree from "../../images/306565222_595634298767513_1694876367040829990_n.jpg";
-import imgFour from "../../images/310330093_614064756924467_6633563874696938473_n.jpg";
-import imgOne from "../../images/320333034_674716350869815_146148279957736682_n.jpg";
-
 import ServiceItem from "./ServiceItem";
 
-const ServiceList = ({ serviceList, serviceCart, setServiceCart }) => {
+const ServiceList = ({
+  serviceList,
+  serviceCart,
+  setServiceCart,
+  imgOne,
+  imgTwo,
+  imgThree,
+  imgFour,
+  imgFive,
+}) => {
   let arrayImg = [];
   arrayImg.push(imgOne);
   arrayImg.push(imgTwo);
