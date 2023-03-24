@@ -4,7 +4,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsArrowBarLeft } from "react-icons/bs";
 import CartProduct from "./CartProduct";
-import { postCustomerOrder } from "../../api";
+import { getOrderId, postCustomerOrder } from "../../api";
 import CustomerAndOrderDetails from "./CustomerOrderDetails";
 import AlertOrder from "./AlertOrder";
 import { Badge } from "react-bootstrap";
@@ -78,14 +78,24 @@ const Cart = ({
       setShowCustomer(true);
     }
   };
+
   //handle per registrare l'ordine finale al backend
-  const handleCompleteOrder = () => {
-    serviceCart.forEach((element) => {
-      postCustomerOrder(customer.id, element.id, element.quantity);
-      setShowCustomer(false);
-      setShowCompleted(true);
-      setServiceCart([]);
-    });
+  const handleCompleteOrder = async () => {
+    for (let i = 0; i < serviceCart.length; ) {
+      const result = await postCustomerOrder(
+        customer.id,
+        serviceCart[i].id,
+        serviceCart[i].quantity
+      );
+      if (result.ok) {
+        i++;
+      }
+    }
+
+    //reset cart e stati
+    setServiceCart([]);
+    setShowCustomer(false);
+    setShowCompleted(true);
   };
 
   // per la generazione e gestione dei cartProducts
