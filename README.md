@@ -1,7 +1,13 @@
 # ThePainterSite
 Final trainee project for DigitazonTechSchool
 ##
-##
+ADMIN login:
+Username:AdminPainter -
+Password:passWord22!
+#
+USER login:
+Username:PaoloWH40K -
+Password:passAA!@a3
 ##
 ##
 ##

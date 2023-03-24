@@ -19,6 +19,12 @@ import {
 import { useEffect, useState } from "react";
 import Footer from "./components/navbar-app-footer/Footer";
 
+import imgOne from "./images/watching.jpg";
+import imgTwo from "./images/tzangor-mini-resized.jpg";
+import imgThree from "./images/tank+manticore.jpg";
+import imgFour from "./images/artorias.jpg";
+import imgFive from "./images/commissar1.jpg";
+
 const App = () => {
   const [cookieTrigger, setCookieTrigger] = useState(false);
   const [articleList, setArticleList] = useState([]);
@@ -132,6 +138,11 @@ const App = () => {
                 setServiceList={setServiceList}
                 serviceCart={serviceCart}
                 setServiceCart={setServiceCart}
+                imgOne={imgOne}
+                imgTwo={imgTwo}
+                imgThree={imgThree}
+                imgFour={imgFour}
+                imgFive={imgFive}
               />
             }
           />
@@ -174,6 +185,11 @@ const App = () => {
                 articleList={articleList}
                 setArticleList={setArticleList}
                 loggedUser={loggedUser}
+                imgOne={imgOne}
+                imgTwo={imgTwo}
+                imgThree={imgThree}
+                imgFour={imgFour}
+                imgFive={imgFive}
               />
             }
           />

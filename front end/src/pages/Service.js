@@ -1,11 +1,7 @@
 import { getServices } from "../api";
 import { useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import imgOne from "../images/watching.jpg";
-import imgTwo from "../images/tzangor-mini-resized.jpg";
-import imgThree from "../images/tank+manticore.jpg";
-import imgFour from "../images/artorias.jpg";
-import imgFive from "../images/commissar1.jpg";
+
 import ServiceList from "../components/services/ServiceList";
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import "../components/services/Service.css";
@@ -15,6 +11,11 @@ const Service = ({
   setServiceList,
   serviceCart,
   setServiceCart,
+  imgOne,
+  imgTwo,
+  imgThree,
+  imgFour,
+  imgFive,
 }) => {
   useEffect(() => {
     const loadService = async () => {

@@ -34,6 +34,11 @@ const Admin = ({
   articleList,
   setArticleList,
   loggedUser,
+  imgOne,
+  imgTwo,
+  imgThree,
+  imgFour,
+  imgFive,
 }) => {
   const [toggleAdmin, setToggleAdmin] = useState("");
   const [subscribers, setSubscribers] = useState([]);
@@ -526,6 +531,11 @@ const Admin = ({
             handlePostService={handlePostService}
             handleDeleteService={handleDeleteService}
             handlePutService={handlePutService}
+            imgOne={imgOne}
+            imgTwo={imgTwo}
+            imgThree={imgThree}
+            imgFour={imgFour}
+            imgFive={imgFive}
           />
         );
         break;
