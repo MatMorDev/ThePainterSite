@@ -1,13 +1,13 @@
 # ThePainterSite
-final trainee project for DigitazonTechSchool
-#
-#
-#
-#
-#
-#
-#
-#
+Final trainee project for DigitazonTechSchool
+##
+##
+##
+##
+##
+##
+##
+##
 # BACK END
 # per generare DB su MySQL ed inserire un user diverso da localhost
 # 
@@ -27,11 +27,10 @@ MYUSER=springUser;MYPSW=fakePassword;MYSQL_HOST=127.0.0.2
  src > main > resources
 2) avviare the PainterApplication ed attendere che vengano terminati i processi
 3) spostare data.sql e schema.sql da cartella "DDL generated", per evitare ai successivi riavvii errori duplicazione
-## NOTA: nel caso di reset del DB, prima eliminarlo da MySQL per poi ripetere la procedura di creazione(user persiste non necessario)
-## 		e solo poi ripetere i punti da 1 a 3
+## NOTA: nel caso di reset del DB, prima eliminarlo da MySQL per poi ripetere la procedura di creazione(user persiste non necessario) e solo poi ripetere i punti da 1 a 3
 
 ## FRONT END - librerie installate ##
-npm install react-router-dom
-npm install react-icons
-npm install react-bootstrap bootstrap
-npm install reactive-button
+1) npm install react-router-dom
+2) npm install react-icons
+3) npm install react-bootstrap bootstrap
+4) npm install reactive-button
